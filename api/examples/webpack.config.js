@@ -1,5 +1,6 @@
 const { VueLoaderPlugin } = require('vue-loader');
 const path = require('node:path');
+const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = {
   mode: 'production',
@@ -16,12 +17,18 @@ module.exports = {
   optimization: {
     minimize: true,
     minimizer: [
-      (compiler) => {
-        const TerserPlugin = require('terser-webpack-plugin');
-        new TerserPlugin({
-          extractComments: false,
-        }).apply(compiler);
-      },
+      new TerserPlugin({
+        extractComments: false,
+        parallel: true,
+        terserOptions: {
+          compress: {
+            drop_console: true,
+          },
+          output: {
+            comments: false,
+          },
+        },
+      }),
     ],
   },
   module: {
