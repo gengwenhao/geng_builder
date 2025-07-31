@@ -12,5 +12,7 @@ export default defineComponent({
 </script>
 
 <template>
-  <div v-if="value">__markdown_html__</div>
+  <div v-if="value" class="scheme-component">
+    <div class="scheme-component__md-container">__markdown_html__</div>
+  </div>
 </template>

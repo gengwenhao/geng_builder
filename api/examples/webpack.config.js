@@ -4,7 +4,12 @@ const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = {
   mode: 'production',
+  target: 'web', // 明确指定目标环境
   entry: path.resolve(__dirname, './test.scheme.md'),
+  stats: 'errors-warnings', // 精简控制台输出
+  infrastructureLogging: {
+    level: 'error', // 只显示错误日志
+  },
   output: {
     clean: true,
     filename: 'scheme_component.js',
@@ -12,6 +17,13 @@ module.exports = {
     library: {
       type: 'umd',
       name: 'GengSchemeComponent',
+    },
+  },
+  cache: {
+    type: 'filesystem',
+    cacheDirectory: path.resolve(__dirname, '.cache/webpack'),
+    buildDependencies: {
+      config: [__filename],
     },
   },
   optimization: {
@@ -30,6 +42,8 @@ module.exports = {
         },
       }),
     ],
+    moduleIds: 'deterministic',
+    chunkIds: 'deterministic',
   },
   module: {
     rules: [
@@ -42,7 +56,6 @@ module.exports = {
           },
         ],
       },
-      // TMD 由于 VueLoaderPlugin 内部机制，这个还不能删除
       {
         test: /\.vue$/,
         use: ['vue-loader'],
@@ -50,4 +63,10 @@ module.exports = {
     ],
   },
   plugins: [new VueLoaderPlugin()],
+  resolve: {
+    extensions: ['.js', '.vue', '.json'],
+    alias: {
+      '@': path.resolve(__dirname, 'src'),
+    },
+  },
 };

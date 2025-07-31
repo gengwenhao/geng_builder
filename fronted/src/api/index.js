@@ -1,7 +1,7 @@
 import _ from 'lodash'
 
-export const getEntryComponent = async () => {
-  const res = await fetch('./scheme_component.js')
+export const getEntryComponent = async (url = 'http://localhost:3000/scheme_markdown/component.js') => {
+  const res = await fetch(url)
   const jsCode = await res.text()
 
   // 创建一个 script 标签来执行组件代码
@@ -20,6 +20,6 @@ export const getEntryComponent = async () => {
 }
 
 export const getEntryData = async () => {
-  const res = await fetch('./data.json')
+  const res = await fetch('http://localhost:3000/scheme_markdown/data.json')
   return res.json()
 }

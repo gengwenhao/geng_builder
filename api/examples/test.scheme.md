@@ -1,8 +1,12 @@
-# **value.title** 
+# 管家主应用重构
+
+**value.version**
+
+**value.time**
 
 # 背景
 
-**value.background**
+管家主应用技术栈太旧，需要升级更新，因管家业务特殊性，不再主应用里直接更新， 采用新建应用作为基座主应用，原主应用作为qiankun子应用，最终通过修改域名解析的方式完成灰度，尽量减少影响。
 
 # 目标
 
@@ -207,14 +211,15 @@
     
 
 ## Mixins（可后置）
-- calIsChatFreelyVersion
-- multipleVersionPath
-- isMultipleVersion
-- apolloConfig
-- bindSheetShop
-- showReturnOrderDecribe
-- showTrackQuestionReply
-- showZtoDiscountActivityApplyDialog
+
+    calIsChatFreelyVersion
+    multipleVersionPath
+    isMultipleVersion
+    apolloConfig
+    bindSheetShop
+    showReturnOrderDecribe
+    showTrackQuestionReply
+    showZtoDiscountActivityApplyDialog
 
 # 新应用
 
@@ -244,3 +249,7 @@
 |  旧应用页面对接新基座  |  3d  |   |   |   |
 |  各子应用功能兼容/改造/验证  |   |   |   |   |
 |   |   |   |   |   |
+
+# 改动点
+
+[《改动点1》](https://docs.zto.com/i/nodes/gNKMlbrq3WXANa9Y2Rau4mv5p6Ad9nL1?#)
