@@ -1,11 +1,11 @@
 <script>
 import { defineComponent } from 'vue';
 export default defineComponent({
-  name: 'HelloGeng',
+  name: 'SchemeComponent',
   props: {
     value: {
       type: Object,
-      default: { title: 'Hello Geng~~' },
+      default: { title: 'Hello SchemeComponent' },
     },
   },
 });

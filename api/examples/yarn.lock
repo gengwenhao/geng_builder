@@ -1881,7 +1881,7 @@ tapable@^2.1.1, tapable@^2.2.0:
   resolved "https://npm.ztosys.com/tapable/-/tapable-2.2.2.tgz#ab4984340d30cb9989a490032f086dbb8b56d872"
   integrity sha512-Re10+NauLTMCudc7T5WLFLAwDhQ0JWdrMK+9B2M8zR5hRExKmsRDCBA7/aV/pNJFltmBFO5BAMlQFi/vq3nKOg==
 
-terser-webpack-plugin@^5.3.11:
+terser-webpack-plugin@^5.3.11, terser-webpack-plugin@^5.3.14:
   version "5.3.14"
   resolved "https://npm.ztosys.com/terser-webpack-plugin/-/terser-webpack-plugin-5.3.14.tgz#9031d48e57ab27567f02ace85c7d690db66c3e06"
   integrity sha512-vkZjpUjb6OMS7dhV+tILUW6BhpDR7P2L/aQSAv+Uwk+m8KATX9EccViHTJR2qDtACKPIYndLGCyl3FMo+r2LMw==

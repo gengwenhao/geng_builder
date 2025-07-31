@@ -2,17 +2,27 @@ const { VueLoaderPlugin } = require('vue-loader');
 const path = require('node:path');
 
 module.exports = {
-  cache: false,
-  mode: 'development',
+  mode: 'production',
   entry: path.resolve(__dirname, './test.scheme.md'),
   output: {
     clean: true,
     filename: 'scheme_component.js',
-    path: __dirname + '/dist',
+    path: path.resolve(__dirname, './dist'),
     library: {
       type: 'umd',
       name: 'GengSchemeComponent',
     },
+  },
+  optimization: {
+    minimize: true,
+    minimizer: [
+      (compiler) => {
+        const TerserPlugin = require('terser-webpack-plugin');
+        new TerserPlugin({
+          extractComments: false,
+        }).apply(compiler);
+      },
+    ],
   },
   module: {
     rules: [
