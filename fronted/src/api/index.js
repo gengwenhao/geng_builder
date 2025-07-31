@@ -1,8 +1,15 @@
 import _ from 'lodash'
 
 export const getEntryComponent = async (url = 'http://localhost:3000/scheme_markdown/component.js') => {
-  const res = await fetch(url)
-  const jsCode = await res.text()
+  let res = ''
+  let jsCode = ''
+
+  try {
+    res = await fetch(url)
+    jsCode = await res.text()
+  } catch (_) {
+    return null
+  }
 
   // 创建一个 script 标签来执行组件代码
   // const script = document.createElement('script')
@@ -20,6 +27,10 @@ export const getEntryComponent = async (url = 'http://localhost:3000/scheme_mark
 }
 
 export const getEntryData = async () => {
-  const res = await fetch('http://localhost:3000/scheme_markdown/data.json')
-  return res.json()
+  try {
+    const res = await fetch('http://localhost:3000/scheme_markdown/data.json')
+    return res.json()
+  } catch (err) {
+    return null
+  }
 }

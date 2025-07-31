@@ -1,19 +1,11 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
-import { getEntryComponent, getEntryData } from '@/api'
-
-let entryComponent = ref(null)
-let entryData = ref(null)
-
-onMounted(async () => {
-  entryComponent.value = await getEntryComponent()
-  entryData.value = await getEntryData()
-})
+import { useEntry } from '@/hooks/entry'
+const { entryData, entryComponent, isLoaded } = useEntry()
 </script>
 
 <template>
   <div class="home">
-    <component v-if="entryComponent && entryData" :is="entryComponent" v-model="entryData" />
+    <component v-if="isLoaded" :is="entryComponent" v-model="entryData" />
     <div v-else>组件加载中....</div>
   </div>
 </template>
